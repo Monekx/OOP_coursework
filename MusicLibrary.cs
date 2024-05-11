@@ -6,6 +6,8 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Schema;
+using System.IO;
+using Newtonsoft.Json;
 
 namespace OOP_coursework
 {
@@ -22,7 +24,7 @@ namespace OOP_coursework
                 // Если экземпляр еще не был создан, создаем его
                 if (instance == null)
                 {
-                    instance = new MusicLibrary();
+                    instance = LoadFromJson("library.json") ?? new MusicLibrary();
                 }
                 return instance;
             }
@@ -126,46 +128,63 @@ namespace OOP_coursework
             return new MusicLibraryEnumerator(this);
         }
 
-        // Внутренний класс, который реализует IEnumerator
-        private class MusicLibraryEnumerator : IEnumerator<Track>
+        private static MusicLibrary LoadFromJson(string filePath)
         {
-            private MusicLibrary current;
-            private Track currentTrack;
-
-            public MusicLibraryEnumerator(MusicLibrary library)
+            if (File.Exists(filePath))
             {
-                current = library;
+                string json = File.ReadAllText(filePath);
+                return JsonConvert.DeserializeObject<MusicLibrary>(json);
             }
+            return null;
+        }
 
-            public Track Current => currentTrack;
-
-            object IEnumerator.Current => Current;
-
-            public void Dispose()
-            {
-            }
-
-            public bool MoveNext()
-            {
-                if (current == null)
-                    return false;
-
-                if (current.current != null)
-                {
-                    currentTrack = current.current;
-                    current = current.next;
-                    return true;
-                }
-
-                return false;
-            }
-
-            public void Reset()
-            {
-                throw new NotSupportedException();
-            }
+        public void SaveToJson(string filePath)
+        {
+            string json = JsonConvert.SerializeObject(this);
+            File.WriteAllText(filePath, json);
         }
     }
+
+    // Внутренний класс, который реализует IEnumerator
+    public class MusicLibraryEnumerator : IEnumerator<Track>
+    {
+        private MusicLibrary current;
+        private Track currentTrack;
+
+        public MusicLibraryEnumerator(MusicLibrary library)
+        {
+            current = library;
+        }
+
+        public Track Current => currentTrack;
+
+        object IEnumerator.Current => Current;
+
+        public void Dispose()
+        {
+        }
+
+        public bool MoveNext()
+        {
+            if (current == null)
+                return false;
+
+            if (current.current != null)
+            {
+                currentTrack = current.current;
+                current = current.next;
+                return true;
+            }
+
+            return false;
+        }
+
+        public void Reset()
+        {
+            throw new NotSupportedException();
+        }
+    }
+
 
 
     public class Track
@@ -186,7 +205,7 @@ namespace OOP_coursework
             this.Author = author;
             this.Description = description;
             this.IsAlbum = isalbum;
-            
+
         }
     }
 }

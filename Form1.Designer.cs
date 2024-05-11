@@ -1,6 +1,8 @@
-﻿namespace OOP_coursework
+﻿using System.Windows.Forms.VisualStyles;
+
+namespace OOP_coursework
 {
-    partial class Form1
+    partial class MainWindow
     {
         /// <summary>
         /// Обязательная переменная конструктора.
@@ -28,18 +30,27 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem("225");
             System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem("123");
             System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem(new string[] {
             "1111",
             "12343544353",
             "12332432432"}, -1, System.Drawing.SystemColors.InactiveCaption, System.Drawing.SystemColors.HotTrack, null);
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
             this.Search_box = new System.Windows.Forms.TextBox();
             this.Search = new System.Windows.Forms.Button();
             this.refresh = new System.Windows.Forms.Button();
             this.AddTrackButton = new System.Windows.Forms.Button();
             this.DeleteTrack = new System.Windows.Forms.Button();
             this.listViewSongs = new System.Windows.Forms.ListView();
+            this.label1 = new System.Windows.Forms.Label();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveFile = new System.Windows.Forms.Button();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // Search_box
@@ -48,7 +59,7 @@
             this.Search_box.Name = "Search_box";
             this.Search_box.Size = new System.Drawing.Size(686, 20);
             this.Search_box.TabIndex = 0;
-            this.Search_box.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+
             // 
             // Search
             // 
@@ -107,20 +118,75 @@
             this.listViewSongs.UseCompatibleStateImageBehavior = false;
             this.listViewSongs.View = System.Windows.Forms.View.Details;
             // 
-            // Form1
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(13, 26);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(40, 13);
+            this.label1.TabIndex = 7;
+            this.label1.Text = "Пошук";
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.AccessibleName = "Файл";
+            this.contextMenuStrip1.AllowDrop = true;
+            this.contextMenuStrip1.ImeMode = System.Windows.Forms.ImeMode.On;
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem1,
+            this.toolStripMenuItem2,
+            this.toolStripMenuItem3});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 70);
+            this.contextMenuStrip1.Text = "Файл";
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItem1.Text = "toolStripMenuItem1";
+            // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItem2.Text = "toolStripMenuItem2";
+            // 
+            // toolStripMenuItem3
+            // 
+            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItem3.Text = "toolStripMenuItem3";
+            // 
+            // saveFile
+            // 
+            this.saveFile.Location = new System.Drawing.Point(12, 71);
+            this.saveFile.Name = "saveFile";
+            this.saveFile.Size = new System.Drawing.Size(75, 23);
+            this.saveFile.TabIndex = 9;
+            this.saveFile.Text = "Зберегти";
+            this.saveFile.UseVisualStyleBackColor = true;
+            this.saveFile.Click += new System.EventHandler(this.saveFile_Click);
+            // 
+            // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(784, 561);
+            this.Controls.Add(this.saveFile);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.listViewSongs);
             this.Controls.Add(this.DeleteTrack);
             this.Controls.Add(this.AddTrackButton);
             this.Controls.Add(this.refresh);
             this.Controls.Add(this.Search);
             this.Controls.Add(this.Search_box);
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Name = "MainWindow";
+            this.Text = "Довідник меломана";
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosed);
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -134,6 +200,12 @@
         private System.Windows.Forms.Button AddTrackButton;
         private System.Windows.Forms.Button DeleteTrack;
         private System.Windows.Forms.ListView listViewSongs;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3;
+        private System.Windows.Forms.Button saveFile;
     }
 }
 

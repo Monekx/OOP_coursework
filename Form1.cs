@@ -11,28 +11,17 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace OOP_coursework
 {
-    public partial class Form1 : Form
+    public partial class MainWindow : Form
     {
         public MusicLibrary library = MusicLibrary.Instance;
-        public Form1()
+        public MainWindow()
         {
 
             InitializeComponent();
-
-            // Инициализация объекта MusicLibrary
-            
-            library.AddTrack(new Track("X.O.", "1", "Pencil", false));
-            library.AddTrack(new Track("Penis2", "2", "Pencil", false));
-            library.AddTrack(new Track("Penis3", "3", "Pencil", false));
-            library.AddTrack(new Track("Penis4", "4", "Pencil", false));
-            library.AddTrack(new Track("Penis5", "5", "Pencil", false));
             listViewSongs.View = View.Details;
             listViewSongs.Columns.Add("Назва", 190);
             listViewSongs.Columns.Add("Автор", 190);
             listViewSongs.Columns.Add("Опис", 380);
-            listViewSongs.Items.Add(new ListViewItem(new string[] { "Название трека 1", "Автор трека 1", "Описание трека 1" }));
-            listViewSongs.Items.Add(new ListViewItem(new string[] { "Название трека 2", "Автор трека 2", "Описание трека 2" }));
-            listViewSongs.Items.Add(new ListViewItem(new string[] { "Название трека 3", "Автор трека 3", "Описание трека 3" }));
 
 
             // Заполнение ListBox данными из библиотеки
@@ -71,6 +60,12 @@ namespace OOP_coursework
 
         }
 
+        private void Form1_FormClosed(object sender, FormClosingEventArgs e)
+        {
+            // При закрытии приложения сохраняем данные в файл JSON
+            library.SaveToJson("library.json");
+        }
+
         private void AddTrackButton_Click(object sender, EventArgs e)
         {
             AddTrackForm addTrackForm = new AddTrackForm();
@@ -80,11 +75,6 @@ namespace OOP_coursework
         private void refresh_Click(object sender, EventArgs e)
         {
             RefreshSongList(library);
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void Search_Click(object sender, EventArgs e)
@@ -99,6 +89,11 @@ namespace OOP_coursework
             int id = (int)listViewSongs.SelectedItems[0].Tag;
             library.RemoveTrack(id);
             RefreshSongList(library);
+        }
+
+        private void saveFile_Click(object sender, EventArgs e)
+        {
+            library.SaveToJson("library.json");
         }
     }
 }
