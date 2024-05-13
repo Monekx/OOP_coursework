@@ -50,20 +50,23 @@ namespace OOP_coursework
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.saveFile = new System.Windows.Forms.Button();
+            this.openDisks = new System.Windows.Forms.Button();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // Search_box
             // 
-            this.Search_box.Location = new System.Drawing.Point(12, 45);
+            this.Search_box.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.Search_box.Location = new System.Drawing.Point(12, 35);
             this.Search_box.Name = "Search_box";
             this.Search_box.Size = new System.Drawing.Size(686, 20);
             this.Search_box.TabIndex = 0;
-
             // 
             // Search
             // 
-            this.Search.Location = new System.Drawing.Point(704, 44);
+            this.Search.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.Search.Location = new System.Drawing.Point(704, 34);
             this.Search.Name = "Search";
             this.Search.Size = new System.Drawing.Size(68, 21);
             this.Search.TabIndex = 1;
@@ -73,9 +76,10 @@ namespace OOP_coursework
             // 
             // refresh
             // 
-            this.refresh.Location = new System.Drawing.Point(665, 71);
+            this.refresh.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.refresh.Location = new System.Drawing.Point(656, 61);
             this.refresh.Name = "refresh";
-            this.refresh.Size = new System.Drawing.Size(107, 23);
+            this.refresh.Size = new System.Drawing.Size(116, 23);
             this.refresh.TabIndex = 3;
             this.refresh.Text = "Перезавантажити";
             this.refresh.UseVisualStyleBackColor = true;
@@ -83,9 +87,10 @@ namespace OOP_coursework
             // 
             // AddTrackButton
             // 
-            this.AddTrackButton.Location = new System.Drawing.Point(665, 526);
+            this.AddTrackButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.AddTrackButton.Location = new System.Drawing.Point(666, 478);
             this.AddTrackButton.Name = "AddTrackButton";
-            this.AddTrackButton.Size = new System.Drawing.Size(107, 23);
+            this.AddTrackButton.Size = new System.Drawing.Size(106, 23);
             this.AddTrackButton.TabIndex = 4;
             this.AddTrackButton.Text = "Додати трек";
             this.AddTrackButton.UseVisualStyleBackColor = true;
@@ -93,7 +98,8 @@ namespace OOP_coursework
             // 
             // DeleteTrack
             // 
-            this.DeleteTrack.Location = new System.Drawing.Point(552, 526);
+            this.DeleteTrack.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.DeleteTrack.Location = new System.Drawing.Point(553, 478);
             this.DeleteTrack.Name = "DeleteTrack";
             this.DeleteTrack.Size = new System.Drawing.Size(107, 23);
             this.DeleteTrack.TabIndex = 5;
@@ -103,6 +109,9 @@ namespace OOP_coursework
             // 
             // listViewSongs
             // 
+            this.listViewSongs.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.listViewSongs.HideSelection = false;
             listViewItem3.Checked = true;
             listViewItem3.StateImageIndex = 1;
@@ -111,9 +120,9 @@ namespace OOP_coursework
             listViewItem1,
             listViewItem2,
             listViewItem3});
-            this.listViewSongs.Location = new System.Drawing.Point(12, 100);
+            this.listViewSongs.Location = new System.Drawing.Point(12, 90);
             this.listViewSongs.Name = "listViewSongs";
-            this.listViewSongs.Size = new System.Drawing.Size(760, 420);
+            this.listViewSongs.Size = new System.Drawing.Size(760, 382);
             this.listViewSongs.TabIndex = 6;
             this.listViewSongs.UseCompatibleStateImageBehavior = false;
             this.listViewSongs.View = System.Windows.Forms.View.Details;
@@ -121,7 +130,7 @@ namespace OOP_coursework
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(13, 26);
+            this.label1.Location = new System.Drawing.Point(13, 16);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(40, 13);
             this.label1.TabIndex = 7;
@@ -160,7 +169,8 @@ namespace OOP_coursework
             // 
             // saveFile
             // 
-            this.saveFile.Location = new System.Drawing.Point(12, 71);
+            this.saveFile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.saveFile.Location = new System.Drawing.Point(576, 61);
             this.saveFile.Name = "saveFile";
             this.saveFile.Size = new System.Drawing.Size(75, 23);
             this.saveFile.TabIndex = 9;
@@ -168,11 +178,24 @@ namespace OOP_coursework
             this.saveFile.UseVisualStyleBackColor = true;
             this.saveFile.Click += new System.EventHandler(this.saveFile_Click);
             // 
+            // openDisks
+            // 
+            this.openDisks.Location = new System.Drawing.Point(12, 478);
+            this.openDisks.Name = "openDisks";
+            this.openDisks.Size = new System.Drawing.Size(75, 23);
+            this.openDisks.TabIndex = 10;
+            this.openDisks.Text = "Диски";
+            this.openDisks.UseVisualStyleBackColor = true;
+            this.openDisks.Click += new System.EventHandler(this.openDisks_Click);
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(784, 561);
+            this.AutoScroll = true;
+            this.AutoScrollMinSize = new System.Drawing.Size(100, 100);
+            this.ClientSize = new System.Drawing.Size(784, 513);
+            this.Controls.Add(this.openDisks);
             this.Controls.Add(this.saveFile);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.listViewSongs);
@@ -182,10 +205,11 @@ namespace OOP_coursework
             this.Controls.Add(this.Search);
             this.Controls.Add(this.Search_box);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MinimumSize = new System.Drawing.Size(640, 480);
             this.Name = "MainWindow";
             this.Text = "Довідник меломана";
-            this.Load += new System.EventHandler(this.Form1_Load);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosed);
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -206,6 +230,7 @@ namespace OOP_coursework
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3;
         private System.Windows.Forms.Button saveFile;
+        private System.Windows.Forms.Button openDisks;
     }
 }
 

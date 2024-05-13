@@ -83,8 +83,28 @@
     <Compile Include="AddTrackForm.Designer.cs">
       <DependentUpon>AddTrackForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="AddTracksToDisk.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddTracksToDisk.Designer.cs">
+      <DependentUpon>AddTracksToDisk.cs</DependentUpon>
+    </Compile>
     <Compile Include="Artist.cs" />
     <Compile Include="ArtistBase.cs" />
+    <Compile Include="Disk.cs" />
+    <Compile Include="DiskContent.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DiskContent.Designer.cs">
+      <DependentUpon>DiskContent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DisksList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DisksList.Designer.cs">
+      <DependentUpon>DisksList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DiskStorage.cs" />
     <Compile Include="MusicLibrary.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -96,6 +116,15 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="AddTrackForm.resx">
       <DependentUpon>AddTrackForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddTracksToDisk.resx">
+      <DependentUpon>AddTracksToDisk.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DiskContent.resx">
+      <DependentUpon>DiskContent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DisksList.resx">
+      <DependentUpon>DisksList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>

@@ -105,6 +105,21 @@ namespace OOP_coursework
             return copy;
         }
 
+        public Track GetTrackById(int id)
+        {
+            Track result = null;
+            if (current.id == id)
+            {
+                result = current;
+            }
+            else
+            {
+                next?.GetTrackById(id);
+
+            }
+            return result;
+        }
+
         // Метод для поиска трека по ключевым словам
         public List<Track> SearchTracks(string keyword)
         {

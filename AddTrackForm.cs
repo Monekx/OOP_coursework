@@ -18,11 +18,6 @@ namespace OOP_coursework
             InitializeComponent();
         }
 
-
-        private void AddTrackToLibrary(Track track)
-        {
-            
-        }
         private void AddTrackForm_Load(object sender, EventArgs e)
         {
 

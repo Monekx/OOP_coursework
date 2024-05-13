@@ -107,6 +107,9 @@
             this.Controls.Add(this.DescriptionBox);
             this.Controls.Add(this.AuthorBox);
             this.Controls.Add(this.NameBox);
+            this.MaximumSize = new System.Drawing.Size(364, 241);
+            this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(364, 241);
             this.Name = "AddTrackForm";
             this.Text = "Додати трек";
             this.Load += new System.EventHandler(this.AddTrackForm_Load);

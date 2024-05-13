@@ -1,13 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace OOP_coursework
 {
@@ -86,6 +80,7 @@ namespace OOP_coursework
 
         private void DeleteTrack_Click(object sender, EventArgs e)
         {
+            if (listViewSongs.SelectedItems == null) { MessageBox.Show("Ви не заповнили одне або декілька полей!", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error); return; } 
             int id = (int)listViewSongs.SelectedItems[0].Tag;
             library.RemoveTrack(id);
             RefreshSongList(library);
@@ -94,6 +89,12 @@ namespace OOP_coursework
         private void saveFile_Click(object sender, EventArgs e)
         {
             library.SaveToJson("library.json");
+        }
+
+        private void openDisks_Click(object sender, EventArgs e)
+        {
+            DisksList disksList = new DisksList();
+            disksList.ShowDialog();
         }
     }
 }
