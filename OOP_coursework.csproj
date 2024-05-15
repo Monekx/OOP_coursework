@@ -77,57 +77,57 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AddTrackForm.cs">
+    <Compile Include="Forms\AddTrackForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddTrackForm.Designer.cs">
+    <Compile Include="Forms\AddTrackForm.Designer.cs">
       <DependentUpon>AddTrackForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="AddTracksToDisk.cs">
+    <Compile Include="Forms\AddTracksToDisk.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddTracksToDisk.Designer.cs">
+    <Compile Include="Forms\AddTracksToDisk.Designer.cs">
       <DependentUpon>AddTracksToDisk.cs</DependentUpon>
     </Compile>
-    <Compile Include="Artist.cs" />
-    <Compile Include="ArtistBase.cs" />
-    <Compile Include="Disk.cs" />
-    <Compile Include="DiskContent.cs">
+    <Compile Include="Models\Artist.cs" />
+    <Compile Include="Models\ArtistBase.cs" />
+    <Compile Include="Models\Disk.cs" />
+    <Compile Include="Forms\DiskContent.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DiskContent.Designer.cs">
+    <Compile Include="Forms\DiskContent.Designer.cs">
       <DependentUpon>DiskContent.cs</DependentUpon>
     </Compile>
-    <Compile Include="DisksList.cs">
+    <Compile Include="Models\DiskStorage.cs" />
+    <Compile Include="Forms\AdvSearch.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DisksList.Designer.cs">
-      <DependentUpon>DisksList.cs</DependentUpon>
+    <Compile Include="Forms\AdvSearch.Designer.cs">
+      <DependentUpon>AdvSearch.cs</DependentUpon>
     </Compile>
-    <Compile Include="DiskStorage.cs" />
-    <Compile Include="MusicLibrary.cs" />
-    <Compile Include="Form1.cs">
+    <Compile Include="Models\MusicLibrary.cs" />
+    <Compile Include="Forms\MainWindow.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Forms\MainWindow.Designer.cs">
+      <DependentUpon>MainWindow.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="AddTrackForm.resx">
+    <EmbeddedResource Include="Forms\AddTrackForm.resx">
       <DependentUpon>AddTrackForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AddTracksToDisk.resx">
+    <EmbeddedResource Include="Forms\AddTracksToDisk.resx">
       <DependentUpon>AddTracksToDisk.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DiskContent.resx">
+    <EmbeddedResource Include="Forms\DiskContent.resx">
       <DependentUpon>DiskContent.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DisksList.resx">
-      <DependentUpon>DisksList.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\MainWindow.resx">
+      <DependentUpon>MainWindow.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\AdvSearch.resx">
+      <DependentUpon>AdvSearch.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -165,5 +165,6 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

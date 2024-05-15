@@ -43,6 +43,7 @@
             this.addTrackToDisk_View.TabIndex = 0;
             this.addTrackToDisk_View.UseCompatibleStateImageBehavior = false;
             this.addTrackToDisk_View.View = System.Windows.Forms.View.Details;
+            
             // 
             // addTrackToDisk_OK
             // 

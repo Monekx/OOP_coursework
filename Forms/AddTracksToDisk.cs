@@ -31,20 +31,21 @@ namespace OOP_coursework
         private void GetTracks(MusicLibrary library) 
         {
 
-            foreach (Track track in library)
+            foreach (Track track in library.tracks)
             {
                 string[] row = { track.Name, track.Author, track.Description };
-                addTrackToDisk_View.Items.Add(new ListViewItem(row)).Tag = track.id;
+                addTrackToDisk_View.Items.Add(new ListViewItem(row)).Tag = track.Id;
             }
 
         }
         
-
+        
 
         private void addTrackToDisk_OK_Click(object sender, EventArgs e)
         {
             DiskStorage diskStorage = DiskStorage.Instance;
             Disk recievedDisk = diskStorage.Search(recDiskID.ToString());
+            
             foreach (ListViewItem selectedItem in addTrackToDisk_View.SelectedItems)
             {
                 // Получаем идентификатор трека из свойства Tag элемента
@@ -54,8 +55,8 @@ namespace OOP_coursework
                 Track selectedTrack = MusicLibrary.Instance.GetTrackById(trackId);
 
                 // Добавляем трек в объект recDisk
-                recievedDisk.AddToDisk(selectedTrack);
-                diskStorage.UpdateDisk(recDiskID, recievedDisk);
+                diskStorage.UpdateDisk(recDiskID, selectedTrack);
+                
             }
             // Закрываем форму после добавления треков
             Close();

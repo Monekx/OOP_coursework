@@ -18,22 +18,26 @@ namespace OOP_coursework
         {
             currDiskID = id;
             InitializeComponent();
-            diskContentView.Columns.Add("Трек", 150);
-            diskContentView.Columns.Add("Автор", 150);
-            diskContentView.Columns.Add("Опис треку", 150);
 
+            diskContentView.View = View.Details;
+            diskContentView.Columns.Add("Назва", 190);
+            diskContentView.Columns.Add("Автор", 190);
+            diskContentView.Columns.Add("Опис", 380);
+
+            RefreshDisk(currDiskID.ToString());
 
         }
 
-        public void RefreshDisk(string id)
+        private void RefreshDisk(string id)
         {
             diskContentView.Items.Clear();
 
-            foreach (Track track in DiskStorage.Instance.Search(id))
+            foreach (Track track in DiskStorage.Instance.Search(id).Content)
             {
                 string[] row = { track.Name, track.Author, track.Description };
-                diskContentView.Items.Add(new ListViewItem(row)).Tag = track.id;
+                diskContentView.Items.Add(new ListViewItem(row)).Tag = track.Id;
             }
+
         }
 
         private void listView1_SelectedIndexChanged(object sender, EventArgs e)
@@ -47,7 +51,7 @@ namespace OOP_coursework
             addTracksToDisk.ShowDialog();
 
             Disk updatedDisk = DiskStorage.Instance.Search(currDiskID.ToString());
-            MessageBox.Show(updatedDisk.ToString());
+            
             RefreshDisk(currDiskID.ToString());
         }
     }
