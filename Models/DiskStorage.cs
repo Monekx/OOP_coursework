@@ -12,7 +12,15 @@ public class DiskStorage
     {
         get
         {
-            if (instance == null) { instance = LoadFromJson("save.json") ?? new DiskStorage(); }
+            try
+            {
+                if (instance != null)
+                {
+                    return instance;
+                }
+                instance = LoadFromJson("save.json") ?? new DiskStorage(); return instance;
+            }
+            catch { instance = new DiskStorage(); }
             return instance;
         }
     }
@@ -39,13 +47,19 @@ public class DiskStorage
         Disk disk = Disks.Find(d => d.DiskId == id);
         if (disk != null)
         {
-            disk.AddToDisk(track);
+            disk.AddToDisk(track.Id);
         }
     }
 
     public void RemoveDisk(Disk disk)
     {
         Disks.Remove(disk);
+    }
+
+    public void RemoveDisk(int id)
+    {
+        
+        Disks.RemoveAt(Disks.FindIndex(x => x.DiskId == id));
     }
 
     public List<Disk> GetAllDisks()

@@ -13,32 +13,23 @@ namespace OOP_coursework
         private static int NextID = 1;
         public int DiskId { get; private set; }
         public string DiskName { get; set; }
-        public List<Track> Content { get; set; }
+        public List<int> Content { get; set; }
 
         public Disk(string disk)
         {
             DiskId = NextID++;
             DiskName = disk;
-            Content = new List<Track>(1000);
+            Content = new List<int>(100);
         }
 
-        public void AddToDisk(Track track)
+        public void AddToDisk(int track_id)
         {
-            Content.Add(track);
-        }
-
-        public void EditTrack(int id, Track replaceItem)
-        {
-            int index = Content.FindIndex(x => x.Id == id);
-            if (index != -1)
-            {
-                Content[index] = replaceItem;
-            }
+            Content.Add(track_id);
         }
 
         public void RemoveFromDisk(int id)
         {
-            Content.RemoveAll(x => x.Id == id);
+            Content.RemoveAll(x => x == id);
         }
     }
 

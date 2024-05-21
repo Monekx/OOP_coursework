@@ -9,6 +9,7 @@ using System.Xml.Schema;
 using System.IO;
 using Newtonsoft.Json;
 using System.Net;
+using System.Reflection;
 
 namespace OOP_coursework
 {
@@ -22,11 +23,15 @@ namespace OOP_coursework
         {
             get
             {
-                // Если экземпляр еще не был создан, создаем его
-                if (instance == null)
+                try
                 {
-                    instance = LoadFromJson("save.json") ?? new MusicLibrary();
+                    if (instance != null)
+                    {
+                        return instance;
+                    }
+                    instance = LoadFromJson("save.json") ?? new MusicLibrary(); return instance;
                 }
+                catch { instance = new MusicLibrary(); }
                 return instance;
             }
         }
@@ -87,7 +92,31 @@ namespace OOP_coursework
             return result;
         }
 
-        
+        public List<Track> SearchTracksAuthor(string keyword)
+        {
+            List<Track> result = new List<Track>();
+            foreach (Track current in tracks)
+            {
+                if (current != null && current.Author.Contains(keyword))
+                {
+                    result.Add(current);
+                }
+            }
+            return result;
+        }
+
+        public List<Track> SearchTracksName(string keyword)
+        {
+            List<Track> result = new List<Track>();
+            foreach (Track current in tracks)
+            {
+                if (current != null && current.Name.Contains(keyword))
+                {
+                    result.Add(current);
+                }
+            }
+            return result;
+        }
 
         private static MusicLibrary LoadFromJson(string filePath)
         {

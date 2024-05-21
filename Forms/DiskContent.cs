@@ -31,9 +31,10 @@ namespace OOP_coursework
         private void RefreshDisk(string id)
         {
             diskContentView.Items.Clear();
-
-            foreach (Track track in DiskStorage.Instance.Search(id).Content)
+            MusicLibrary library = MusicLibrary.Instance;
+            foreach (int id_ in DiskStorage.Instance.Search(id).Content)
             {
+                Track track = library.GetTrackById(id_);
                 string[] row = { track.Name, track.Author, track.Description };
                 diskContentView.Items.Add(new ListViewItem(row)).Tag = track.Id;
             }

@@ -48,34 +48,38 @@ namespace OOP_coursework
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.checkBox4 = new System.Windows.Forms.CheckBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.checkBox_name = new System.Windows.Forms.CheckBox();
-            this.checkBox_author = new System.Windows.Forms.CheckBox();
-            this.checkBox_disk = new System.Windows.Forms.CheckBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
+            this.groupAdvParam = new System.Windows.Forms.GroupBox();
+            this.checkBox_literal = new System.Windows.Forms.CheckBox();
+            this.groupParam = new System.Windows.Forms.GroupBox();
+            this.checkBox_disk = new System.Windows.Forms.RadioButton();
+            this.checkBox_name = new System.Windows.Forms.RadioButton();
+            this.checkBox_author = new System.Windows.Forms.RadioButton();
+            this.advSearch_search = new System.Windows.Forms.Button();
+            this.advSearch_textbox = new System.Windows.Forms.TextBox();
+            this.advSearchLabel = new System.Windows.Forms.Label();
             this.chooseDisk = new System.Windows.Forms.Button();
             this.diskList = new System.Windows.Forms.ListView();
             this.DisksGroup = new System.Windows.Forms.GroupBox();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripMenuItem();
-            this.виглядToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.проПрограмуToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.diskNameAdd = new System.Windows.Forms.TextBox();
+            this.diskCreate = new System.Windows.Forms.Button();
+            this.menuStrip = new System.Windows.Forms.MenuStrip();
+            this.toolMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolMenu_Save = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolMenu_exit = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolView = new System.Windows.Forms.ToolStripMenuItem();
             this.темаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem7 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem8 = new System.Windows.Forms.ToolStripMenuItem();
-            this.diskNameAdd = new System.Windows.Forms.TextBox();
-            this.diskCreate = new System.Windows.Forms.Button();
+            this.toolAbout = new System.Windows.Forms.ToolStripMenuItem();
+            this.TrackList = new System.Windows.Forms.Label();
+            this.checkbox_Disk_help = new System.Windows.Forms.ToolTip(this.components);
+            this.refreshWindow = new System.Windows.Forms.Button();
+            this.deleteDisk = new System.Windows.Forms.Button();
             this.contextMenuStrip1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
-            this.groupBox1.SuspendLayout();
+            this.groupAdvParam.SuspendLayout();
+            this.groupParam.SuspendLayout();
             this.DisksGroup.SuspendLayout();
-            this.menuStrip1.SuspendLayout();
+            this.menuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // Search_box
@@ -133,9 +137,9 @@ namespace OOP_coursework
             listViewItem1,
             listViewItem2,
             listViewItem3});
-            this.listViewSongs.Location = new System.Drawing.Point(12, 70);
+            this.listViewSongs.Location = new System.Drawing.Point(12, 89);
             this.listViewSongs.Name = "listViewSongs";
-            this.listViewSongs.Size = new System.Drawing.Size(358, 430);
+            this.listViewSongs.Size = new System.Drawing.Size(358, 411);
             this.listViewSongs.TabIndex = 6;
             this.listViewSongs.UseCompatibleStateImageBehavior = false;
             this.listViewSongs.View = System.Windows.Forms.View.Details;
@@ -180,97 +184,101 @@ namespace OOP_coursework
             this.toolStripMenuItem3.Size = new System.Drawing.Size(180, 22);
             this.toolStripMenuItem3.Text = "toolStripMenuItem3";
             // 
-            // groupBox2
+            // groupAdvParam
             // 
-            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox2.Controls.Add(this.checkBox4);
-            this.groupBox2.Location = new System.Drawing.Point(582, 99);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(186, 133);
-            this.groupBox2.TabIndex = 16;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Додаткові параметри";
+            this.groupAdvParam.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupAdvParam.Controls.Add(this.checkBox_literal);
+            this.groupAdvParam.Location = new System.Drawing.Point(582, 99);
+            this.groupAdvParam.Name = "groupAdvParam";
+            this.groupAdvParam.Size = new System.Drawing.Size(186, 133);
+            this.groupAdvParam.TabIndex = 16;
+            this.groupAdvParam.TabStop = false;
+            this.groupAdvParam.Text = "Додаткові параметри";
             // 
-            // checkBox4
+            // checkBox_literal
             // 
-            this.checkBox4.AutoSize = true;
-            this.checkBox4.Location = new System.Drawing.Point(6, 19);
-            this.checkBox4.Name = "checkBox4";
-            this.checkBox4.Size = new System.Drawing.Size(113, 17);
-            this.checkBox4.TabIndex = 6;
-            this.checkBox4.Text = "Дослівний пошук";
-            this.checkBox4.UseVisualStyleBackColor = true;
+            this.checkBox_literal.AutoSize = true;
+            this.checkBox_literal.Location = new System.Drawing.Point(6, 19);
+            this.checkBox_literal.Name = "checkBox_literal";
+            this.checkBox_literal.Size = new System.Drawing.Size(113, 17);
+            this.checkBox_literal.TabIndex = 6;
+            this.checkBox_literal.Text = "Дослівний пошук";
+            this.checkBox_literal.UseVisualStyleBackColor = true;
             // 
-            // groupBox1
+            // groupParam
             // 
-            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox1.Controls.Add(this.checkBox_name);
-            this.groupBox1.Controls.Add(this.checkBox_author);
-            this.groupBox1.Controls.Add(this.checkBox_disk);
-            this.groupBox1.Location = new System.Drawing.Point(376, 99);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(200, 133);
-            this.groupBox1.TabIndex = 15;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Параметри пошуку";
+            this.groupParam.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupParam.Controls.Add(this.checkBox_disk);
+            this.groupParam.Controls.Add(this.checkBox_name);
+            this.groupParam.Controls.Add(this.checkBox_author);
+            this.groupParam.Location = new System.Drawing.Point(376, 99);
+            this.groupParam.Name = "groupParam";
+            this.groupParam.Size = new System.Drawing.Size(200, 133);
+            this.groupParam.TabIndex = 15;
+            this.groupParam.TabStop = false;
+            this.groupParam.Text = "Параметри пошуку";
+            // 
+            // checkBox_disk
+            // 
+            this.checkBox_disk.AutoSize = true;
+            this.checkBox_disk.Location = new System.Drawing.Point(6, 64);
+            this.checkBox_disk.Name = "checkBox_disk";
+            this.checkBox_disk.Size = new System.Drawing.Size(114, 17);
+            this.checkBox_disk.TabIndex = 8;
+            this.checkBox_disk.TabStop = true;
+            this.checkBox_disk.Text = "Пошук по дискам";
+            this.checkBox_disk.UseVisualStyleBackColor = true;
             // 
             // checkBox_name
             // 
             this.checkBox_name.AutoSize = true;
-            this.checkBox_name.Location = new System.Drawing.Point(6, 42);
+            this.checkBox_name.Location = new System.Drawing.Point(6, 41);
             this.checkBox_name.Name = "checkBox_name";
-            this.checkBox_name.Size = new System.Drawing.Size(115, 17);
-            this.checkBox_name.TabIndex = 3;
+            this.checkBox_name.Size = new System.Drawing.Size(114, 17);
+            this.checkBox_name.TabIndex = 7;
+            this.checkBox_name.TabStop = true;
             this.checkBox_name.Text = "Пошук за назвою";
             this.checkBox_name.UseVisualStyleBackColor = true;
             // 
             // checkBox_author
             // 
             this.checkBox_author.AutoSize = true;
-            this.checkBox_author.Location = new System.Drawing.Point(6, 19);
+            this.checkBox_author.Location = new System.Drawing.Point(6, 18);
             this.checkBox_author.Name = "checkBox_author";
-            this.checkBox_author.Size = new System.Drawing.Size(120, 17);
-            this.checkBox_author.TabIndex = 4;
+            this.checkBox_author.Size = new System.Drawing.Size(119, 17);
+            this.checkBox_author.TabIndex = 6;
+            this.checkBox_author.TabStop = true;
             this.checkBox_author.Text = "Пошук за автором";
             this.checkBox_author.UseVisualStyleBackColor = true;
             // 
-            // checkBox_disk
+            // advSearch_search
             // 
-            this.checkBox_disk.AutoSize = true;
-            this.checkBox_disk.Location = new System.Drawing.Point(6, 65);
-            this.checkBox_disk.Name = "checkBox_disk";
-            this.checkBox_disk.Size = new System.Drawing.Size(115, 17);
-            this.checkBox_disk.TabIndex = 5;
-            this.checkBox_disk.Text = "Пошук по дискам";
-            this.checkBox_disk.UseVisualStyleBackColor = true;
+            this.advSearch_search.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.advSearch_search.Location = new System.Drawing.Point(709, 238);
+            this.advSearch_search.Name = "advSearch_search";
+            this.advSearch_search.Size = new System.Drawing.Size(59, 23);
+            this.advSearch_search.TabIndex = 14;
+            this.advSearch_search.Text = "Пошук";
+            this.advSearch_search.UseVisualStyleBackColor = true;
+            this.advSearch_search.Click += new System.EventHandler(this.advSearch_search_Click);
             // 
-            // button1
+            // advSearch_textbox
             // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Location = new System.Drawing.Point(709, 238);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(59, 23);
-            this.button1.TabIndex = 14;
-            this.button1.Text = "Пошук";
-            this.button1.UseVisualStyleBackColor = true;
+            this.advSearch_textbox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.advSearch_textbox.Location = new System.Drawing.Point(483, 70);
+            this.advSearch_textbox.Name = "advSearch_textbox";
+            this.advSearch_textbox.Size = new System.Drawing.Size(285, 20);
+            this.advSearch_textbox.TabIndex = 13;
             // 
-            // textBox1
+            // advSearchLabel
             // 
-            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox1.Location = new System.Drawing.Point(483, 70);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(285, 20);
-            this.textBox1.TabIndex = 13;
-            // 
-            // label2
-            // 
-            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(373, 73);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(104, 13);
-            this.label2.TabIndex = 12;
-            this.label2.Text = "Розширений пошук";
+            this.advSearchLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.advSearchLabel.AutoSize = true;
+            this.advSearchLabel.Location = new System.Drawing.Point(373, 73);
+            this.advSearchLabel.Name = "advSearchLabel";
+            this.advSearchLabel.Size = new System.Drawing.Size(104, 13);
+            this.advSearchLabel.TabIndex = 12;
+            this.advSearchLabel.Text = "Розширений пошук";
             // 
             // chooseDisk
             // 
@@ -280,6 +288,7 @@ namespace OOP_coursework
             this.chooseDisk.TabIndex = 18;
             this.chooseDisk.Text = "Відкрити диск";
             this.chooseDisk.UseVisualStyleBackColor = true;
+            this.chooseDisk.Click += new System.EventHandler(this.ChooseDisk_Click);
             // 
             // diskList
             // 
@@ -292,11 +301,12 @@ namespace OOP_coursework
             this.diskList.UseCompatibleStateImageBehavior = false;
             this.diskList.UseWaitCursor = true;
             this.diskList.View = System.Windows.Forms.View.Details;
-            this.diskList.ItemActivate += new System.EventHandler(this.diskList_ItemActivate_1);
+            this.diskList.ItemActivate += new System.EventHandler(this.DiskList_ItemActivate_1);
             // 
             // DisksGroup
             // 
             this.DisksGroup.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.DisksGroup.Controls.Add(this.deleteDisk);
             this.DisksGroup.Controls.Add(this.diskNameAdd);
             this.DisksGroup.Controls.Add(this.diskCreate);
             this.DisksGroup.Controls.Add(this.diskList);
@@ -307,76 +317,6 @@ namespace OOP_coursework
             this.DisksGroup.TabIndex = 19;
             this.DisksGroup.TabStop = false;
             this.DisksGroup.Text = "Диски";
-            // 
-            // menuStrip1
-            // 
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem4,
-            this.виглядToolStripMenuItem,
-            this.проПрограмуToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(784, 24);
-            this.menuStrip1.TabIndex = 20;
-            this.menuStrip1.Text = "menuStrip1";
-            // 
-            // toolStripMenuItem4
-            // 
-            this.toolStripMenuItem4.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem5,
-            this.toolStripMenuItem6});
-            this.toolStripMenuItem4.Name = "toolStripMenuItem4";
-            this.toolStripMenuItem4.Size = new System.Drawing.Size(48, 20);
-            this.toolStripMenuItem4.Text = "Файл";
-            this.toolStripMenuItem4.Click += new System.EventHandler(this.toolStripMenuItem4_Click);
-            // 
-            // toolStripMenuItem5
-            // 
-            this.toolStripMenuItem5.Name = "toolStripMenuItem5";
-            this.toolStripMenuItem5.Size = new System.Drawing.Size(180, 22);
-            this.toolStripMenuItem5.Text = "Зберегти";
-            // 
-            // toolStripMenuItem6
-            // 
-            this.toolStripMenuItem6.Name = "toolStripMenuItem6";
-            this.toolStripMenuItem6.Size = new System.Drawing.Size(180, 22);
-            this.toolStripMenuItem6.Text = "Вихід";
-            // 
-            // виглядToolStripMenuItem
-            // 
-            this.виглядToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.темаToolStripMenuItem});
-            this.виглядToolStripMenuItem.Name = "виглядToolStripMenuItem";
-            this.виглядToolStripMenuItem.Size = new System.Drawing.Size(57, 20);
-            this.виглядToolStripMenuItem.Text = "Вигляд";
-            // 
-            // проПрограмуToolStripMenuItem
-            // 
-            this.проПрограмуToolStripMenuItem.Name = "проПрограмуToolStripMenuItem";
-            this.проПрограмуToolStripMenuItem.Size = new System.Drawing.Size(99, 20);
-            this.проПрограмуToolStripMenuItem.Text = "Про програму";
-            // 
-            // темаToolStripMenuItem
-            // 
-            this.темаToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem7,
-            this.toolStripMenuItem8});
-            this.темаToolStripMenuItem.Name = "темаToolStripMenuItem";
-            this.темаToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.темаToolStripMenuItem.Text = "Тема";
-            // 
-            // toolStripMenuItem7
-            // 
-            this.toolStripMenuItem7.Name = "toolStripMenuItem7";
-            this.toolStripMenuItem7.Size = new System.Drawing.Size(180, 22);
-            this.toolStripMenuItem7.Text = "Темна";
-            this.toolStripMenuItem7.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
-            // 
-            // toolStripMenuItem8
-            // 
-            this.toolStripMenuItem8.Name = "toolStripMenuItem8";
-            this.toolStripMenuItem8.Size = new System.Drawing.Size(180, 22);
-            this.toolStripMenuItem8.Text = "Світла";
             // 
             // diskNameAdd
             // 
@@ -394,7 +334,114 @@ namespace OOP_coursework
             this.diskCreate.TabIndex = 19;
             this.diskCreate.Text = "Створити диск";
             this.diskCreate.UseVisualStyleBackColor = true;
-            this.diskCreate.Click += new System.EventHandler(this.diskCreate_Click_1);
+            this.diskCreate.Click += new System.EventHandler(this.DiskCreate_Click_1);
+            // 
+            // menuStrip
+            // 
+            this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolMenu,
+            this.toolView,
+            this.toolAbout});
+            this.menuStrip.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip.Name = "menuStrip";
+            this.menuStrip.Size = new System.Drawing.Size(784, 24);
+            this.menuStrip.TabIndex = 20;
+            this.menuStrip.Text = "menuStrip1";
+            // 
+            // toolMenu
+            // 
+            this.toolMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolMenu_Save,
+            this.toolMenu_exit});
+            this.toolMenu.Name = "toolMenu";
+            this.toolMenu.Size = new System.Drawing.Size(48, 20);
+            this.toolMenu.Text = "Файл";
+            this.toolMenu.Click += new System.EventHandler(this.ToolStripMenuItem4_Click);
+            // 
+            // toolMenu_Save
+            // 
+            this.toolMenu_Save.Name = "toolMenu_Save";
+            this.toolMenu_Save.Size = new System.Drawing.Size(180, 22);
+            this.toolMenu_Save.Text = "Зберегти";
+            this.toolMenu_Save.Click += new System.EventHandler(this.toolMenu_Save_Click);
+            // 
+            // toolMenu_exit
+            // 
+            this.toolMenu_exit.Name = "toolMenu_exit";
+            this.toolMenu_exit.Size = new System.Drawing.Size(180, 22);
+            this.toolMenu_exit.Text = "Вихід";
+            this.toolMenu_exit.Click += new System.EventHandler(this.toolMenu_exit_Click);
+            // 
+            // toolView
+            // 
+            this.toolView.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.темаToolStripMenuItem});
+            this.toolView.Name = "toolView";
+            this.toolView.Size = new System.Drawing.Size(57, 20);
+            this.toolView.Text = "Вигляд";
+            // 
+            // темаToolStripMenuItem
+            // 
+            this.темаToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem7,
+            this.toolStripMenuItem8});
+            this.темаToolStripMenuItem.Name = "темаToolStripMenuItem";
+            this.темаToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.темаToolStripMenuItem.Text = "Тема";
+            // 
+            // toolStripMenuItem7
+            // 
+            this.toolStripMenuItem7.Name = "toolStripMenuItem7";
+            this.toolStripMenuItem7.Size = new System.Drawing.Size(109, 22);
+            this.toolStripMenuItem7.Text = "Темна";
+            this.toolStripMenuItem7.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            // 
+            // toolStripMenuItem8
+            // 
+            this.toolStripMenuItem8.Name = "toolStripMenuItem8";
+            this.toolStripMenuItem8.Size = new System.Drawing.Size(109, 22);
+            this.toolStripMenuItem8.Text = "Світла";
+            // 
+            // toolAbout
+            // 
+            this.toolAbout.Name = "toolAbout";
+            this.toolAbout.Size = new System.Drawing.Size(99, 20);
+            this.toolAbout.Text = "Про програму";
+            this.toolAbout.Click += new System.EventHandler(this.toolAbout_Click);
+            // 
+            // TrackList
+            // 
+            this.TrackList.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.TrackList.AutoSize = true;
+            this.TrackList.Location = new System.Drawing.Point(13, 73);
+            this.TrackList.Name = "TrackList";
+            this.TrackList.Size = new System.Drawing.Size(104, 13);
+            this.TrackList.TabIndex = 21;
+            this.TrackList.Text = "Розширений пошук";
+            // 
+            // checkbox_Disk_help
+            // 
+            this.checkbox_Disk_help.Popup += new System.Windows.Forms.PopupEventHandler(this.checkbox_Disk_help_Popup);
+            // 
+            // refreshWindow
+            // 
+            this.refreshWindow.Location = new System.Drawing.Point(12, 511);
+            this.refreshWindow.Name = "refreshWindow";
+            this.refreshWindow.Size = new System.Drawing.Size(107, 23);
+            this.refreshWindow.TabIndex = 22;
+            this.refreshWindow.Text = "Оновити вікно";
+            this.refreshWindow.UseVisualStyleBackColor = true;
+            this.refreshWindow.Click += new System.EventHandler(this.Refresh_Click);
+            // 
+            // deleteDisk
+            // 
+            this.deleteDisk.Location = new System.Drawing.Point(157, 204);
+            this.deleteDisk.Name = "deleteDisk";
+            this.deleteDisk.Size = new System.Drawing.Size(107, 23);
+            this.deleteDisk.TabIndex = 21;
+            this.deleteDisk.Text = "Видалити диск";
+            this.deleteDisk.UseVisualStyleBackColor = true;
+            this.deleteDisk.Click += new System.EventHandler(this.deleteDisk_Click);
             // 
             // MainWindow
             // 
@@ -403,13 +450,15 @@ namespace OOP_coursework
             this.AutoScroll = true;
             this.AutoScrollMinSize = new System.Drawing.Size(100, 100);
             this.ClientSize = new System.Drawing.Size(784, 546);
-            this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.refreshWindow);
+            this.Controls.Add(this.TrackList);
+            this.Controls.Add(this.menuStrip);
             this.Controls.Add(this.DisksGroup);
-            this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.groupAdvParam);
+            this.Controls.Add(this.groupParam);
+            this.Controls.Add(this.advSearch_search);
+            this.Controls.Add(this.advSearch_textbox);
+            this.Controls.Add(this.advSearchLabel);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.listViewSongs);
             this.Controls.Add(this.DeleteTrack);
@@ -417,21 +466,21 @@ namespace OOP_coursework
             this.Controls.Add(this.Search);
             this.Controls.Add(this.Search_box);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MainMenuStrip = this.menuStrip1;
+            this.MainMenuStrip = this.menuStrip;
             this.MinimumSize = new System.Drawing.Size(640, 480);
             this.Name = "MainWindow";
             this.Text = "Довідник меломана";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosed);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.contextMenuStrip1.ResumeLayout(false);
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.groupAdvParam.ResumeLayout(false);
+            this.groupAdvParam.PerformLayout();
+            this.groupParam.ResumeLayout(false);
+            this.groupParam.PerformLayout();
             this.DisksGroup.ResumeLayout(false);
             this.DisksGroup.PerformLayout();
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
+            this.menuStrip.ResumeLayout(false);
+            this.menuStrip.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -449,29 +498,33 @@ namespace OOP_coursework
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.CheckBox checkBox4;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.CheckBox checkBox_name;
-        private System.Windows.Forms.CheckBox checkBox_author;
-        private System.Windows.Forms.CheckBox checkBox_disk;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.GroupBox groupAdvParam;
+        private System.Windows.Forms.CheckBox checkBox_literal;
+        private System.Windows.Forms.GroupBox groupParam;
+        private System.Windows.Forms.Button advSearch_search;
+        private System.Windows.Forms.TextBox advSearch_textbox;
+        private System.Windows.Forms.Label advSearchLabel;
         private System.Windows.Forms.Button chooseDisk;
         private System.Windows.Forms.ListView diskList;
         private System.Windows.Forms.GroupBox DisksGroup;
-        private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem4;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem5;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem6;
-        private System.Windows.Forms.ToolStripMenuItem виглядToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem проПрограмуToolStripMenuItem;
+        private System.Windows.Forms.MenuStrip menuStrip;
+        private System.Windows.Forms.ToolStripMenuItem toolMenu;
+        private System.Windows.Forms.ToolStripMenuItem toolMenu_Save;
+        private System.Windows.Forms.ToolStripMenuItem toolMenu_exit;
+        private System.Windows.Forms.ToolStripMenuItem toolView;
+        private System.Windows.Forms.ToolStripMenuItem toolAbout;
         private System.Windows.Forms.ToolStripMenuItem темаToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem7;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem8;
         private System.Windows.Forms.TextBox diskNameAdd;
         private System.Windows.Forms.Button diskCreate;
+        private System.Windows.Forms.Label TrackList;
+        private System.Windows.Forms.RadioButton checkBox_author;
+        private System.Windows.Forms.RadioButton checkBox_name;
+        private System.Windows.Forms.RadioButton checkBox_disk;
+        private System.Windows.Forms.ToolTip checkbox_Disk_help;
+        private System.Windows.Forms.Button refreshWindow;
+        private System.Windows.Forms.Button deleteDisk;
     }
 }
 

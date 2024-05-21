@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Security.Cryptography;
 using System.Windows.Forms;
 
 namespace OOP_coursework
@@ -21,9 +22,11 @@ namespace OOP_coursework
             diskList.Columns.Add("Назва диску", 150);
             diskList.Columns.Add("Треки диску", 150);
 
+            checkbox_Disk_help.SetToolTip(checkBox_disk, "Пошук дисків, треки яких відповідають критерію пошуку.");
             // Заполнение ListBox данными из библиотеки
             RefreshSongList(library);
             RefreshDiskStorage();
+            
         }
 
         private void RefreshSongList(MusicLibrary library)
@@ -39,6 +42,19 @@ namespace OOP_coursework
             }
         }
 
+        private void RefreshSongList(List<Track> list)
+        {
+            // Очистка списка песен
+            listViewSongs.Items.Clear();
+
+            // Получение всех песен из библиотеки и добавление их в ListView
+            foreach (Track track in list)
+            {
+                string[] row = { track.Name, track.Author, track.Description };
+                listViewSongs.Items.Add(new ListViewItem(row)).Tag = track.Id;
+            }
+        }
+
         private void RefreshDiskStorage()
         {
             diskList.Items.Clear();
@@ -47,16 +63,42 @@ namespace OOP_coursework
             {
                 string tracks = "";
                 int count = 0;
-                foreach (Track track in disc.Content)
+                
+
+                foreach (int id in disc.Content)
                 {
-                    if (tracks == "") { tracks += track.Name; } else { tracks += ", " + track.Name; }
-                    if (count++ == 2) { tracks += "..."; break; }
-                    
+                    Track track = library.GetTrackById(id);
+                    if (track != null)
+                    {
+                        if (tracks == "") { tracks += track.Name; } else { tracks += ", " + track.Name; }
+                        if (count++ == 2) { tracks += "..."; break; }
+                    }
                 }
                 string[] row = { disc.DiskName, tracks };
                 diskList.Items.Add(new ListViewItem(row)).Tag = disc.DiskId;
             }
         }
+
+        private void RefreshDiskStorage(List<Disk> list)
+        {
+            diskList.Items.Clear();
+
+            foreach (Disk disc in list)
+            {
+                string tracks = "";
+                int count = 0;
+                foreach (int id in disc.Content)
+                {
+                    Track track = library.GetTrackById(id);
+                    if (tracks == "") { tracks += track.Name; } else { tracks += ", " + track.Name; }
+                    if (count++ == 2) { tracks += "..."; break; }
+
+                }
+                string[] row = { disc.DiskName, tracks };
+                diskList.Items.Add(new ListViewItem(row)).Tag = disc.DiskId;
+            }
+        }
+
 
         private void ShowSearchResult(List<Track> result)
         {
@@ -71,7 +113,7 @@ namespace OOP_coursework
             }
         }
 
-        private void diskList_ItemActivate_1(object sender, EventArgs e)
+        private void DiskList_ItemActivate_1(object sender, EventArgs e)
         {
             // Получаем выбранный элемент списка
             string item = diskList.SelectedItems[0].Tag.ToString();
@@ -82,11 +124,12 @@ namespace OOP_coursework
             RefreshDiskStorage();
         }
 
-        private void diskCreate_Click_1(object sender, EventArgs e)
+        private void DiskCreate_Click_1(object sender, EventArgs e)
         {
+            if (diskNameAdd.Text == "") { return; }
             Disk newdisk = new Disk(diskNameAdd.Text);
             diskStorage.AddDisk(newdisk);
-
+            diskNameAdd.Text = "";
             RefreshDiskStorage();
         }
 
@@ -111,9 +154,10 @@ namespace OOP_coursework
             RefreshSongList(library);
         }
 
-        private void refresh_Click(object sender, EventArgs e)
+        private void Refresh_Click(object sender, EventArgs e)
         {
             RefreshSongList(library);
+            RefreshDiskStorage();
         }
 
         private void Search_Click(object sender, EventArgs e)
@@ -125,10 +169,27 @@ namespace OOP_coursework
 
         private void DeleteTrack_Click(object sender, EventArgs e)
         {
-            if (listViewSongs.SelectedItems == null) { MessageBox.Show("Ви не заповнили одне або декілька полей!", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error); return; } 
-            int id = (int)listViewSongs.SelectedItems[0].Tag;
-            library.RemoveTrack(id);
+            DialogResult result = MessageBox.Show("Ви впевнені, що хочете це зробити? Цю дію неможливо скасувати!",
+                                              "Підтвердження дії",
+                                              MessageBoxButtons.YesNo,
+                                              MessageBoxIcon.Question);
+            if (result == DialogResult.No) { return; }
+            if (listViewSongs.SelectedItems.Count == 0) { MessageBox.Show("Ви не заповнили одне або декілька полей!", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error); return; }
+            foreach (ListViewItem item in listViewSongs.SelectedItems)
+            {
+                int id = (int)item.Tag;
+                library.RemoveTrack(id);
+
+                foreach (Disk disk in diskStorage.Disks)
+                {
+                    if ( disk.Content.Contains(id) ) { 
+                        disk.RemoveFromDisk(id);
+                    }
+                }
+            }
+            
             RefreshSongList(library);
+            RefreshDiskStorage();
         }
 
         private void SaveFile_Click(object sender, EventArgs e)
@@ -148,11 +209,91 @@ namespace OOP_coursework
             advanceSearchForm.ShowDialog();
         }
 
-        private void toolStripMenuItem4_Click(object sender, EventArgs e)
+        private void ToolStripMenuItem4_Click(object sender, EventArgs e)
         {
 
         }
 
+        private void ChooseDisk_Click(object sender, EventArgs e)
+        {
+            string item = diskList.SelectedItems[0].Tag.ToString();
+            Disk currentDisk = diskStorage.Search(item);
+            DiskContent diskContent = new DiskContent(currentDisk.DiskId);
+            diskContent.ShowDialog();
 
+            RefreshDiskStorage();
+        }
+
+        private void advSearch_search_Click(object sender, EventArgs e)
+        {
+            
+            string keyword = advSearch_textbox.Text;
+            if (keyword == "") { return; }
+            if (checkBox_disk.Checked)
+            {
+                List<Disk> result = new List<Disk> ();
+                foreach (Disk disk in diskStorage.Disks)
+                {
+                    foreach (int id in disk.Content) 
+                    {
+                        Track track = library.GetTrackById(id);
+                        if (track != null && (track.Name.Contains(keyword) || track.Description.Contains(keyword) || track.Author.Contains(keyword)))
+                        {
+                            result.Add(disk);
+                            break;
+                        }
+                    }
+                }
+                RefreshDiskStorage(result);
+            } else if (checkBox_author.Checked) {
+                List<Track> result = library.SearchTracksAuthor(keyword);
+                RefreshSongList(result);
+            } else if (checkBox_name.Checked)
+            {
+                List<Track> result = library.SearchTracksName(keyword);
+                RefreshSongList(result);
+            }
+        }
+
+        private void checkbox_Disk_help_Popup(object sender, PopupEventArgs e)
+        {
+
+        }
+
+        private void toolMenu_exit_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void toolMenu_Save_Click(object sender, EventArgs e)
+        {
+            string lib_json = library.SaveToJson();
+            string disks_json = diskStorage.SaveToJson();
+
+            File.WriteAllText("save.json", $"{{\"Library\":{lib_json},\"Disks\":{disks_json}}}");
+
+        }
+
+        private void deleteDisk_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Ви впевнені, що хочете це зробити? Цю дію неможливо скасувати!",
+                                              "Підтвердження дії",
+                                              MessageBoxButtons.YesNo,
+                                              MessageBoxIcon.Question);
+            if (result == DialogResult.No) { return; }
+            diskStorage.RemoveDisk((int)diskList.SelectedItems[0].Tag);
+            RefreshDiskStorage();
+        }
+
+        private void toolAbout_Click(object sender, EventArgs e)
+        {
+            string programInfo = "Назва програми: Довідник меломана\n" +
+                             "Версия: 1.5b\n" +
+                             "Автор: Соболєв Максим Андрійович\n" +
+                             "Додаткова інформація: ПЗПІ-23-2, перший курс\n" +
+                             "Опис: Курсова робота";
+
+            MessageBox.Show(programInfo, "Про програму", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
     }
 }
