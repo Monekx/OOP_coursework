@@ -89,8 +89,6 @@
     <Compile Include="Forms\AddTracksToDisk.Designer.cs">
       <DependentUpon>AddTracksToDisk.cs</DependentUpon>
     </Compile>
-    <Compile Include="Models\Artist.cs" />
-    <Compile Include="Models\ArtistBase.cs" />
     <Compile Include="Models\Disk.cs" />
     <Compile Include="Forms\DiskContent.cs">
       <SubType>Form</SubType>

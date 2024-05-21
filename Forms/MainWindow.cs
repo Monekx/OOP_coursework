@@ -40,6 +40,7 @@ namespace OOP_coursework
                 string[] row = { track.Name, track.Author, track.Description };
                 listViewSongs.Items.Add(new ListViewItem(row)).Tag = track.Id;
             }
+            TrackList.Text = "Треки в базі";
         }
 
         private void RefreshSongList(List<Track> list)
@@ -53,6 +54,7 @@ namespace OOP_coursework
                 string[] row = { track.Name, track.Author, track.Description };
                 listViewSongs.Items.Add(new ListViewItem(row)).Tag = track.Id;
             }
+            TrackList.Text = "Результати пошуку:";
         }
 
         private void RefreshDiskStorage()
@@ -77,6 +79,7 @@ namespace OOP_coursework
                 string[] row = { disc.DiskName, tracks };
                 diskList.Items.Add(new ListViewItem(row)).Tag = disc.DiskId;
             }
+            DisksGroup.Text = "Диски";
         }
 
         private void RefreshDiskStorage(List<Disk> list)
@@ -97,6 +100,7 @@ namespace OOP_coursework
                 string[] row = { disc.DiskName, tracks };
                 diskList.Items.Add(new ListViewItem(row)).Tag = disc.DiskId;
             }
+            DisksGroup.Text = "Результати пошуку";
         }
 
 
@@ -111,6 +115,8 @@ namespace OOP_coursework
                 string[] row = { track.Name, track.Author, track.Description };
                 listViewSongs.Items.Add(new ListViewItem(row)).Tag = track.Id;
             }
+
+            TrackList.Text = "Результати пошуку:";
         }
 
         private void DiskList_ItemActivate_1(object sender, EventArgs e)
@@ -252,13 +258,14 @@ namespace OOP_coursework
             {
                 List<Track> result = library.SearchTracksName(keyword);
                 RefreshSongList(result);
+            } else
+            { 
+                List<Track> result = library.SearchTracks(keyword);
+                ShowSearchResult(result);
             }
         }
 
-        private void checkbox_Disk_help_Popup(object sender, PopupEventArgs e)
-        {
 
-        }
 
         private void toolMenu_exit_Click(object sender, EventArgs e)
         {
@@ -294,6 +301,20 @@ namespace OOP_coursework
                              "Опис: Курсова робота";
 
             MessageBox.Show(programInfo, "Про програму", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void advSearch_textbox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyValue == (char)Keys.Enter) { advSearch_search_Click(sender, e); e.Handled = true; e.SuppressKeyPress = true; }
+            
+        }
+
+        private void diskNameAdd_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyValue == (char)Keys.Enter)
+            {
+                DiskCreate_Click_1(sender, e);
+            }
         }
     }
 }

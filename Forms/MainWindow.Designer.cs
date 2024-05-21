@@ -60,21 +60,17 @@ namespace OOP_coursework
             this.chooseDisk = new System.Windows.Forms.Button();
             this.diskList = new System.Windows.Forms.ListView();
             this.DisksGroup = new System.Windows.Forms.GroupBox();
+            this.deleteDisk = new System.Windows.Forms.Button();
             this.diskNameAdd = new System.Windows.Forms.TextBox();
             this.diskCreate = new System.Windows.Forms.Button();
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.toolMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.toolMenu_Save = new System.Windows.Forms.ToolStripMenuItem();
             this.toolMenu_exit = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolView = new System.Windows.Forms.ToolStripMenuItem();
-            this.темаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem7 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem8 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.TrackList = new System.Windows.Forms.Label();
             this.checkbox_Disk_help = new System.Windows.Forms.ToolTip(this.components);
             this.refreshWindow = new System.Windows.Forms.Button();
-            this.deleteDisk = new System.Windows.Forms.Button();
             this.contextMenuStrip1.SuspendLayout();
             this.groupAdvParam.SuspendLayout();
             this.groupParam.SuspendLayout();
@@ -264,11 +260,13 @@ namespace OOP_coursework
             // 
             // advSearch_textbox
             // 
+            this.advSearch_textbox.AcceptsReturn = true;
             this.advSearch_textbox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.advSearch_textbox.Location = new System.Drawing.Point(483, 70);
             this.advSearch_textbox.Name = "advSearch_textbox";
             this.advSearch_textbox.Size = new System.Drawing.Size(285, 20);
             this.advSearch_textbox.TabIndex = 13;
+            this.advSearch_textbox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.advSearch_textbox_KeyDown);
             // 
             // advSearchLabel
             // 
@@ -318,12 +316,23 @@ namespace OOP_coursework
             this.DisksGroup.TabStop = false;
             this.DisksGroup.Text = "Диски";
             // 
+            // deleteDisk
+            // 
+            this.deleteDisk.Location = new System.Drawing.Point(157, 204);
+            this.deleteDisk.Name = "deleteDisk";
+            this.deleteDisk.Size = new System.Drawing.Size(107, 23);
+            this.deleteDisk.TabIndex = 21;
+            this.deleteDisk.Text = "Видалити диск";
+            this.deleteDisk.UseVisualStyleBackColor = true;
+            this.deleteDisk.Click += new System.EventHandler(this.deleteDisk_Click);
+            // 
             // diskNameAdd
             // 
             this.diskNameAdd.Location = new System.Drawing.Point(6, 19);
             this.diskNameAdd.Name = "diskNameAdd";
             this.diskNameAdd.Size = new System.Drawing.Size(281, 20);
             this.diskNameAdd.TabIndex = 20;
+            this.diskNameAdd.KeyDown += new System.Windows.Forms.KeyEventHandler(this.diskNameAdd_KeyDown);
             // 
             // diskCreate
             // 
@@ -340,7 +349,6 @@ namespace OOP_coursework
             // 
             this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolMenu,
-            this.toolView,
             this.toolAbout});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
@@ -361,46 +369,16 @@ namespace OOP_coursework
             // toolMenu_Save
             // 
             this.toolMenu_Save.Name = "toolMenu_Save";
-            this.toolMenu_Save.Size = new System.Drawing.Size(180, 22);
+            this.toolMenu_Save.Size = new System.Drawing.Size(124, 22);
             this.toolMenu_Save.Text = "Зберегти";
             this.toolMenu_Save.Click += new System.EventHandler(this.toolMenu_Save_Click);
             // 
             // toolMenu_exit
             // 
             this.toolMenu_exit.Name = "toolMenu_exit";
-            this.toolMenu_exit.Size = new System.Drawing.Size(180, 22);
+            this.toolMenu_exit.Size = new System.Drawing.Size(124, 22);
             this.toolMenu_exit.Text = "Вихід";
             this.toolMenu_exit.Click += new System.EventHandler(this.toolMenu_exit_Click);
-            // 
-            // toolView
-            // 
-            this.toolView.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.темаToolStripMenuItem});
-            this.toolView.Name = "toolView";
-            this.toolView.Size = new System.Drawing.Size(57, 20);
-            this.toolView.Text = "Вигляд";
-            // 
-            // темаToolStripMenuItem
-            // 
-            this.темаToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem7,
-            this.toolStripMenuItem8});
-            this.темаToolStripMenuItem.Name = "темаToolStripMenuItem";
-            this.темаToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.темаToolStripMenuItem.Text = "Тема";
-            // 
-            // toolStripMenuItem7
-            // 
-            this.toolStripMenuItem7.Name = "toolStripMenuItem7";
-            this.toolStripMenuItem7.Size = new System.Drawing.Size(109, 22);
-            this.toolStripMenuItem7.Text = "Темна";
-            this.toolStripMenuItem7.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
-            // 
-            // toolStripMenuItem8
-            // 
-            this.toolStripMenuItem8.Name = "toolStripMenuItem8";
-            this.toolStripMenuItem8.Size = new System.Drawing.Size(109, 22);
-            this.toolStripMenuItem8.Text = "Світла";
             // 
             // toolAbout
             // 
@@ -415,13 +393,9 @@ namespace OOP_coursework
             this.TrackList.AutoSize = true;
             this.TrackList.Location = new System.Drawing.Point(13, 73);
             this.TrackList.Name = "TrackList";
-            this.TrackList.Size = new System.Drawing.Size(104, 13);
+            this.TrackList.Size = new System.Drawing.Size(113, 13);
             this.TrackList.TabIndex = 21;
-            this.TrackList.Text = "Розширений пошук";
-            // 
-            // checkbox_Disk_help
-            // 
-            this.checkbox_Disk_help.Popup += new System.Windows.Forms.PopupEventHandler(this.checkbox_Disk_help_Popup);
+            this.TrackList.Text = "Перелік треків в базі";
             // 
             // refreshWindow
             // 
@@ -432,16 +406,6 @@ namespace OOP_coursework
             this.refreshWindow.Text = "Оновити вікно";
             this.refreshWindow.UseVisualStyleBackColor = true;
             this.refreshWindow.Click += new System.EventHandler(this.Refresh_Click);
-            // 
-            // deleteDisk
-            // 
-            this.deleteDisk.Location = new System.Drawing.Point(157, 204);
-            this.deleteDisk.Name = "deleteDisk";
-            this.deleteDisk.Size = new System.Drawing.Size(107, 23);
-            this.deleteDisk.TabIndex = 21;
-            this.deleteDisk.Text = "Видалити диск";
-            this.deleteDisk.UseVisualStyleBackColor = true;
-            this.deleteDisk.Click += new System.EventHandler(this.deleteDisk_Click);
             // 
             // MainWindow
             // 
@@ -511,11 +475,7 @@ namespace OOP_coursework
         private System.Windows.Forms.ToolStripMenuItem toolMenu;
         private System.Windows.Forms.ToolStripMenuItem toolMenu_Save;
         private System.Windows.Forms.ToolStripMenuItem toolMenu_exit;
-        private System.Windows.Forms.ToolStripMenuItem toolView;
         private System.Windows.Forms.ToolStripMenuItem toolAbout;
-        private System.Windows.Forms.ToolStripMenuItem темаToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem7;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem8;
         private System.Windows.Forms.TextBox diskNameAdd;
         private System.Windows.Forms.Button diskCreate;
         private System.Windows.Forms.Label TrackList;
