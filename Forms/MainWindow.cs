@@ -139,11 +139,6 @@ namespace OOP_coursework
             RefreshDiskStorage();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void Form1_FormClosed(object sender, FormClosingEventArgs e)
         {
             // При закрытии приложения сохраняем данные в файл JSON
@@ -207,7 +202,7 @@ namespace OOP_coursework
             catch { return; }
         }
 
-        private void advSearch_search_Click(object sender, EventArgs e)
+        private void AdvSearch_search_Click(object sender, EventArgs e)
         {
             
             string keyword = advSearch_textbox.Text;
@@ -244,12 +239,12 @@ namespace OOP_coursework
 
 
 
-        private void toolMenu_exit_Click(object sender, EventArgs e)
+        private void ToolMenu_exit_Click(object sender, EventArgs e)
         {
             Close();
         }
 
-        private void toolMenu_Save_Click(object sender, EventArgs e)
+        private void ToolMenu_Save_Click(object sender, EventArgs e)
         {
             string lib_json = library.SaveToJson();
             string disks_json = diskStorage.SaveToJson();
@@ -258,7 +253,7 @@ namespace OOP_coursework
 
         }
 
-        private void deleteDisk_Click(object sender, EventArgs e)
+        private void DeleteDisk_Click(object sender, EventArgs e)
         {
             if (diskList.SelectedItems.Count == 0) { MessageBox.Show("Ви не обрали жодного треку!", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error); return; }
             DialogResult result = MessageBox.Show("Ви впевнені, що хочете це зробити? Цю дію неможливо скасувати!",
@@ -270,7 +265,7 @@ namespace OOP_coursework
             RefreshDiskStorage();
         }
 
-        private void toolAbout_Click(object sender, EventArgs e)
+        private void ToolAbout_Click(object sender, EventArgs e)
         {
             string programInfo = "Назва програми: Довідник меломана\n" +
                              "Версия: 1.5b\n" +
@@ -281,13 +276,13 @@ namespace OOP_coursework
             MessageBox.Show(programInfo, "Про програму", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
-        private void advSearch_textbox_KeyDown(object sender, KeyEventArgs e)
+        private void AdvSearch_textbox_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyValue == (char)Keys.Enter) { advSearch_search_Click(sender, e); e.Handled = true; e.SuppressKeyPress = true; }
+            if (e.KeyValue == (char)Keys.Enter) { AdvSearch_search_Click(sender, e); e.Handled = true; e.SuppressKeyPress = true; }
             
         }
 
-        private void diskNameAdd_KeyDown(object sender, KeyEventArgs e)
+        private void DiskNameAdd_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyValue == (char)Keys.Enter)
             {

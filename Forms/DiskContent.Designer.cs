@@ -46,7 +46,6 @@
             // 
             // diskContentView
             // 
-            this.diskContentView.CheckBoxes = true;
             this.diskContentView.HideSelection = false;
             this.diskContentView.Location = new System.Drawing.Point(12, 29);
             this.diskContentView.Name = "diskContentView";

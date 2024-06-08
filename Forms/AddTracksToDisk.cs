@@ -24,7 +24,7 @@ namespace OOP_coursework
             GetTracks(MusicLibrary.Instance);
         }
 
-        private void addTrackToForm_DECLINE_Click(object sender, EventArgs e)
+        private void AddTrackToForm_DECLINE_Click(object sender, EventArgs e)
         {
 
         }
@@ -39,8 +39,8 @@ namespace OOP_coursework
             }
 
         }
-        
-        
+
+
 
         private void addTrackToDisk_OK_Click(object sender, EventArgs e)
         {
@@ -55,8 +55,17 @@ namespace OOP_coursework
                 // Находим трек в библиотеке по идентификатору
                 Track selectedTrack = MusicLibrary.Instance.GetTrackById(trackId);
 
+                Disk disk = diskStorage.Search(recDiskID.ToString());
+
+                if (disk.Content.Contains(trackId) != true) 
+                {
+                    diskStorage.UpdateDisk(recDiskID, selectedTrack);
+                } else
+                {
+                    MessageBox.Show($"Трек {selectedTrack.Name} вже знаходиться у диску", "Повідомлення", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
                 // Добавляем трек в объект recDisk
-                diskStorage.UpdateDisk(recDiskID, selectedTrack);
+
                 
             }
             // Закрываем форму после добавления треков

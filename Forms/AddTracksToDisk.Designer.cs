@@ -36,7 +36,6 @@
             // 
             // addTrackToDisk_View
             // 
-            this.addTrackToDisk_View.CheckBoxes = true;
             this.addTrackToDisk_View.HideSelection = false;
             this.addTrackToDisk_View.Location = new System.Drawing.Point(13, 27);
             this.addTrackToDisk_View.Name = "addTrackToDisk_View";
@@ -64,7 +63,7 @@
             this.addTrackToForm_DECLINE.TabIndex = 2;
             this.addTrackToForm_DECLINE.Text = "Скасувати";
             this.addTrackToForm_DECLINE.UseVisualStyleBackColor = true;
-            this.addTrackToForm_DECLINE.Click += new System.EventHandler(this.addTrackToForm_DECLINE_Click);
+            this.addTrackToForm_DECLINE.Click += new System.EventHandler(this.AddTrackToForm_DECLINE_Click);
             // 
             // AddTracksToDisk
             // 

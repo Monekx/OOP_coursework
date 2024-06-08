@@ -200,7 +200,7 @@ namespace OOP_coursework
             this.advSearch_search.TabIndex = 14;
             this.advSearch_search.Text = "Пошук";
             this.advSearch_search.UseVisualStyleBackColor = true;
-            this.advSearch_search.Click += new System.EventHandler(this.advSearch_search_Click);
+            this.advSearch_search.Click += new System.EventHandler(this.AdvSearch_search_Click);
             // 
             // advSearch_textbox
             // 
@@ -210,7 +210,7 @@ namespace OOP_coursework
             this.advSearch_textbox.Name = "advSearch_textbox";
             this.advSearch_textbox.Size = new System.Drawing.Size(285, 20);
             this.advSearch_textbox.TabIndex = 13;
-            this.advSearch_textbox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.advSearch_textbox_KeyDown);
+            this.advSearch_textbox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.AdvSearch_textbox_KeyDown);
             // 
             // advSearchLabel
             // 
@@ -234,7 +234,6 @@ namespace OOP_coursework
             // 
             // diskList
             // 
-            this.diskList.CheckBoxes = true;
             this.diskList.HideSelection = false;
             this.diskList.Location = new System.Drawing.Point(6, 52);
             this.diskList.Name = "diskList";
@@ -268,7 +267,7 @@ namespace OOP_coursework
             this.deleteDisk.TabIndex = 21;
             this.deleteDisk.Text = "Видалити диск";
             this.deleteDisk.UseVisualStyleBackColor = true;
-            this.deleteDisk.Click += new System.EventHandler(this.deleteDisk_Click);
+            this.deleteDisk.Click += new System.EventHandler(this.DeleteDisk_Click);
             // 
             // diskNameAdd
             // 
@@ -276,7 +275,7 @@ namespace OOP_coursework
             this.diskNameAdd.Name = "diskNameAdd";
             this.diskNameAdd.Size = new System.Drawing.Size(281, 20);
             this.diskNameAdd.TabIndex = 20;
-            this.diskNameAdd.KeyDown += new System.Windows.Forms.KeyEventHandler(this.diskNameAdd_KeyDown);
+            this.diskNameAdd.KeyDown += new System.Windows.Forms.KeyEventHandler(this.DiskNameAdd_KeyDown);
             // 
             // diskCreate
             // 
@@ -314,21 +313,21 @@ namespace OOP_coursework
             this.toolMenu_Save.Name = "toolMenu_Save";
             this.toolMenu_Save.Size = new System.Drawing.Size(180, 22);
             this.toolMenu_Save.Text = "Зберегти";
-            this.toolMenu_Save.Click += new System.EventHandler(this.toolMenu_Save_Click);
+            this.toolMenu_Save.Click += new System.EventHandler(this.ToolMenu_Save_Click);
             // 
             // toolMenu_exit
             // 
             this.toolMenu_exit.Name = "toolMenu_exit";
             this.toolMenu_exit.Size = new System.Drawing.Size(180, 22);
             this.toolMenu_exit.Text = "Вихід";
-            this.toolMenu_exit.Click += new System.EventHandler(this.toolMenu_exit_Click);
+            this.toolMenu_exit.Click += new System.EventHandler(this.ToolMenu_exit_Click);
             // 
             // toolAbout
             // 
             this.toolAbout.Name = "toolAbout";
             this.toolAbout.Size = new System.Drawing.Size(99, 20);
             this.toolAbout.Text = "Про програму";
-            this.toolAbout.Click += new System.EventHandler(this.toolAbout_Click);
+            this.toolAbout.Click += new System.EventHandler(this.ToolAbout_Click);
             // 
             // TrackList
             // 
@@ -375,7 +374,6 @@ namespace OOP_coursework
             this.Name = "MainWindow";
             this.Text = "Довідник меломана";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosed);
-            this.Load += new System.EventHandler(this.Form1_Load);
             this.contextMenuStrip1.ResumeLayout(false);
             this.groupParam.ResumeLayout(false);
             this.groupParam.PerformLayout();
