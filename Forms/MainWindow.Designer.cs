@@ -38,18 +38,13 @@ namespace OOP_coursework
             "12343544353",
             "12332432432"}, -1, System.Drawing.SystemColors.InactiveCaption, System.Drawing.SystemColors.HotTrack, null);
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
-            this.Search_box = new System.Windows.Forms.TextBox();
-            this.Search = new System.Windows.Forms.Button();
             this.AddTrackButton = new System.Windows.Forms.Button();
             this.DeleteTrack = new System.Windows.Forms.Button();
             this.listViewSongs = new System.Windows.Forms.ListView();
-            this.label1 = new System.Windows.Forms.Label();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
-            this.groupAdvParam = new System.Windows.Forms.GroupBox();
-            this.checkBox_literal = new System.Windows.Forms.CheckBox();
             this.groupParam = new System.Windows.Forms.GroupBox();
             this.checkBox_disk = new System.Windows.Forms.RadioButton();
             this.checkBox_name = new System.Windows.Forms.RadioButton();
@@ -72,36 +67,15 @@ namespace OOP_coursework
             this.checkbox_Disk_help = new System.Windows.Forms.ToolTip(this.components);
             this.refreshWindow = new System.Windows.Forms.Button();
             this.contextMenuStrip1.SuspendLayout();
-            this.groupAdvParam.SuspendLayout();
             this.groupParam.SuspendLayout();
             this.DisksGroup.SuspendLayout();
             this.menuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
-            // Search_box
-            // 
-            this.Search_box.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.Search_box.Location = new System.Drawing.Point(12, 44);
-            this.Search_box.Name = "Search_box";
-            this.Search_box.Size = new System.Drawing.Size(686, 20);
-            this.Search_box.TabIndex = 0;
-            // 
-            // Search
-            // 
-            this.Search.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.Search.Location = new System.Drawing.Point(704, 43);
-            this.Search.Name = "Search";
-            this.Search.Size = new System.Drawing.Size(68, 21);
-            this.Search.TabIndex = 1;
-            this.Search.Text = "Пошук";
-            this.Search.UseVisualStyleBackColor = true;
-            this.Search.Click += new System.EventHandler(this.Search_Click);
-            // 
             // AddTrackButton
             // 
             this.AddTrackButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.AddTrackButton.Location = new System.Drawing.Point(662, 511);
+            this.AddTrackButton.Location = new System.Drawing.Point(290, 439);
             this.AddTrackButton.Name = "AddTrackButton";
             this.AddTrackButton.Size = new System.Drawing.Size(106, 23);
             this.AddTrackButton.TabIndex = 4;
@@ -112,7 +86,7 @@ namespace OOP_coursework
             // DeleteTrack
             // 
             this.DeleteTrack.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.DeleteTrack.Location = new System.Drawing.Point(549, 511);
+            this.DeleteTrack.Location = new System.Drawing.Point(177, 439);
             this.DeleteTrack.Name = "DeleteTrack";
             this.DeleteTrack.Size = new System.Drawing.Size(107, 23);
             this.DeleteTrack.TabIndex = 5;
@@ -133,21 +107,12 @@ namespace OOP_coursework
             listViewItem1,
             listViewItem2,
             listViewItem3});
-            this.listViewSongs.Location = new System.Drawing.Point(12, 89);
+            this.listViewSongs.Location = new System.Drawing.Point(16, 51);
             this.listViewSongs.Name = "listViewSongs";
-            this.listViewSongs.Size = new System.Drawing.Size(358, 411);
+            this.listViewSongs.Size = new System.Drawing.Size(380, 382);
             this.listViewSongs.TabIndex = 6;
             this.listViewSongs.UseCompatibleStateImageBehavior = false;
             this.listViewSongs.View = System.Windows.Forms.View.Details;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(13, 25);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(40, 13);
-            this.label1.TabIndex = 7;
-            this.label1.Text = "Пошук";
             // 
             // contextMenuStrip1
             // 
@@ -180,36 +145,15 @@ namespace OOP_coursework
             this.toolStripMenuItem3.Size = new System.Drawing.Size(180, 22);
             this.toolStripMenuItem3.Text = "toolStripMenuItem3";
             // 
-            // groupAdvParam
-            // 
-            this.groupAdvParam.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupAdvParam.Controls.Add(this.checkBox_literal);
-            this.groupAdvParam.Location = new System.Drawing.Point(582, 99);
-            this.groupAdvParam.Name = "groupAdvParam";
-            this.groupAdvParam.Size = new System.Drawing.Size(186, 133);
-            this.groupAdvParam.TabIndex = 16;
-            this.groupAdvParam.TabStop = false;
-            this.groupAdvParam.Text = "Додаткові параметри";
-            // 
-            // checkBox_literal
-            // 
-            this.checkBox_literal.AutoSize = true;
-            this.checkBox_literal.Location = new System.Drawing.Point(6, 19);
-            this.checkBox_literal.Name = "checkBox_literal";
-            this.checkBox_literal.Size = new System.Drawing.Size(113, 17);
-            this.checkBox_literal.TabIndex = 6;
-            this.checkBox_literal.Text = "Дослівний пошук";
-            this.checkBox_literal.UseVisualStyleBackColor = true;
-            // 
             // groupParam
             // 
             this.groupParam.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.groupParam.Controls.Add(this.checkBox_disk);
             this.groupParam.Controls.Add(this.checkBox_name);
             this.groupParam.Controls.Add(this.checkBox_author);
-            this.groupParam.Location = new System.Drawing.Point(376, 99);
+            this.groupParam.Location = new System.Drawing.Point(402, 61);
             this.groupParam.Name = "groupParam";
-            this.groupParam.Size = new System.Drawing.Size(200, 133);
+            this.groupParam.Size = new System.Drawing.Size(392, 133);
             this.groupParam.TabIndex = 15;
             this.groupParam.TabStop = false;
             this.groupParam.Text = "Параметри пошуку";
@@ -250,7 +194,7 @@ namespace OOP_coursework
             // advSearch_search
             // 
             this.advSearch_search.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.advSearch_search.Location = new System.Drawing.Point(709, 238);
+            this.advSearch_search.Location = new System.Drawing.Point(735, 200);
             this.advSearch_search.Name = "advSearch_search";
             this.advSearch_search.Size = new System.Drawing.Size(59, 23);
             this.advSearch_search.TabIndex = 14;
@@ -262,7 +206,7 @@ namespace OOP_coursework
             // 
             this.advSearch_textbox.AcceptsReturn = true;
             this.advSearch_textbox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.advSearch_textbox.Location = new System.Drawing.Point(483, 70);
+            this.advSearch_textbox.Location = new System.Drawing.Point(509, 32);
             this.advSearch_textbox.Name = "advSearch_textbox";
             this.advSearch_textbox.Size = new System.Drawing.Size(285, 20);
             this.advSearch_textbox.TabIndex = 13;
@@ -272,7 +216,7 @@ namespace OOP_coursework
             // 
             this.advSearchLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.advSearchLabel.AutoSize = true;
-            this.advSearchLabel.Location = new System.Drawing.Point(373, 73);
+            this.advSearchLabel.Location = new System.Drawing.Point(399, 35);
             this.advSearchLabel.Name = "advSearchLabel";
             this.advSearchLabel.Size = new System.Drawing.Size(104, 13);
             this.advSearchLabel.TabIndex = 12;
@@ -309,7 +253,7 @@ namespace OOP_coursework
             this.DisksGroup.Controls.Add(this.diskCreate);
             this.DisksGroup.Controls.Add(this.diskList);
             this.DisksGroup.Controls.Add(this.chooseDisk);
-            this.DisksGroup.Location = new System.Drawing.Point(376, 267);
+            this.DisksGroup.Location = new System.Drawing.Point(402, 229);
             this.DisksGroup.Name = "DisksGroup";
             this.DisksGroup.Size = new System.Drawing.Size(396, 233);
             this.DisksGroup.TabIndex = 19;
@@ -352,7 +296,7 @@ namespace OOP_coursework
             this.toolAbout});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
-            this.menuStrip.Size = new System.Drawing.Size(784, 24);
+            this.menuStrip.Size = new System.Drawing.Size(806, 24);
             this.menuStrip.TabIndex = 20;
             this.menuStrip.Text = "menuStrip1";
             // 
@@ -364,19 +308,18 @@ namespace OOP_coursework
             this.toolMenu.Name = "toolMenu";
             this.toolMenu.Size = new System.Drawing.Size(48, 20);
             this.toolMenu.Text = "Файл";
-            this.toolMenu.Click += new System.EventHandler(this.ToolStripMenuItem4_Click);
             // 
             // toolMenu_Save
             // 
             this.toolMenu_Save.Name = "toolMenu_Save";
-            this.toolMenu_Save.Size = new System.Drawing.Size(124, 22);
+            this.toolMenu_Save.Size = new System.Drawing.Size(180, 22);
             this.toolMenu_Save.Text = "Зберегти";
             this.toolMenu_Save.Click += new System.EventHandler(this.toolMenu_Save_Click);
             // 
             // toolMenu_exit
             // 
             this.toolMenu_exit.Name = "toolMenu_exit";
-            this.toolMenu_exit.Size = new System.Drawing.Size(124, 22);
+            this.toolMenu_exit.Size = new System.Drawing.Size(180, 22);
             this.toolMenu_exit.Text = "Вихід";
             this.toolMenu_exit.Click += new System.EventHandler(this.toolMenu_exit_Click);
             // 
@@ -389,9 +332,10 @@ namespace OOP_coursework
             // 
             // TrackList
             // 
-            this.TrackList.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.TrackList.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.TrackList.AutoSize = true;
-            this.TrackList.Location = new System.Drawing.Point(13, 73);
+            this.TrackList.Location = new System.Drawing.Point(17, 35);
             this.TrackList.Name = "TrackList";
             this.TrackList.Size = new System.Drawing.Size(113, 13);
             this.TrackList.TabIndex = 21;
@@ -399,7 +343,7 @@ namespace OOP_coursework
             // 
             // refreshWindow
             // 
-            this.refreshWindow.Location = new System.Drawing.Point(12, 511);
+            this.refreshWindow.Location = new System.Drawing.Point(16, 468);
             this.refreshWindow.Name = "refreshWindow";
             this.refreshWindow.Size = new System.Drawing.Size(107, 23);
             this.refreshWindow.TabIndex = 22;
@@ -413,22 +357,18 @@ namespace OOP_coursework
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.AutoScrollMinSize = new System.Drawing.Size(100, 100);
-            this.ClientSize = new System.Drawing.Size(784, 546);
+            this.ClientSize = new System.Drawing.Size(806, 501);
             this.Controls.Add(this.refreshWindow);
             this.Controls.Add(this.TrackList);
             this.Controls.Add(this.menuStrip);
             this.Controls.Add(this.DisksGroup);
-            this.Controls.Add(this.groupAdvParam);
             this.Controls.Add(this.groupParam);
             this.Controls.Add(this.advSearch_search);
             this.Controls.Add(this.advSearch_textbox);
             this.Controls.Add(this.advSearchLabel);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.listViewSongs);
             this.Controls.Add(this.DeleteTrack);
             this.Controls.Add(this.AddTrackButton);
-            this.Controls.Add(this.Search);
-            this.Controls.Add(this.Search_box);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip;
             this.MinimumSize = new System.Drawing.Size(640, 480);
@@ -437,8 +377,6 @@ namespace OOP_coursework
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosed);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.contextMenuStrip1.ResumeLayout(false);
-            this.groupAdvParam.ResumeLayout(false);
-            this.groupAdvParam.PerformLayout();
             this.groupParam.ResumeLayout(false);
             this.groupParam.PerformLayout();
             this.DisksGroup.ResumeLayout(false);
@@ -451,19 +389,13 @@ namespace OOP_coursework
         }
 
         #endregion
-
-        private System.Windows.Forms.TextBox Search_box;
-        private System.Windows.Forms.Button Search;
         private System.Windows.Forms.Button AddTrackButton;
         private System.Windows.Forms.Button DeleteTrack;
         private System.Windows.Forms.ListView listViewSongs;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3;
-        private System.Windows.Forms.GroupBox groupAdvParam;
-        private System.Windows.Forms.CheckBox checkBox_literal;
         private System.Windows.Forms.GroupBox groupParam;
         private System.Windows.Forms.Button advSearch_search;
         private System.Windows.Forms.TextBox advSearch_textbox;

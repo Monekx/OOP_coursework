@@ -51,21 +51,12 @@ public class DiskStorage
         }
     }
 
-    public void RemoveDisk(Disk disk)
-    {
-        Disks.Remove(disk);
-    }
-
     public void RemoveDisk(int id)
     {
         
         Disks.RemoveAt(Disks.FindIndex(x => x.DiskId == id));
     }
 
-    public List<Disk> GetAllDisks()
-    {
-        return Disks;
-    }
 
     private static DiskStorage LoadFromJson(string filePath)
     {

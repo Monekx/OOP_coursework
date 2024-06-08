@@ -18,7 +18,9 @@ namespace OOP_coursework
         {
             currDiskID = id;
             InitializeComponent();
-
+            string diskName = DiskStorage.Instance.Search(id.ToString()).DiskName;
+            label_disk.Text = $"Контент диску {diskName}.";
+            Text = diskName;
             diskContentView.View = View.Details;
             diskContentView.Columns.Add("Назва", 190);
             diskContentView.Columns.Add("Автор", 190);
@@ -41,11 +43,6 @@ namespace OOP_coursework
 
         }
 
-        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void trackSelection_Click(object sender, EventArgs e)
         {
             AddTracksToDisk addTracksToDisk = new AddTracksToDisk(currDiskID);
@@ -54,6 +51,27 @@ namespace OOP_coursework
             Disk updatedDisk = DiskStorage.Instance.Search(currDiskID.ToString());
             
             RefreshDisk(currDiskID.ToString());
+        }
+
+        private void TrackDelete_Click(object sender, EventArgs e)
+        {
+            if (diskContentView.SelectedItems.Count == 0) { MessageBox.Show("Ви не обрали жодного треку до видалення!", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error); return; }
+            DialogResult result = MessageBox.Show("Ви впевнені, що хочете це зробити? Цю дію неможливо скасувати!",
+                                                  "Підтвердження дії",
+                                                  MessageBoxButtons.YesNo,
+                                                  MessageBoxIcon.Question);
+            if (result == DialogResult.No) { return; }
+            DiskStorage diskStorage = DiskStorage.Instance;
+            Disk disk = diskStorage.Search(currDiskID.ToString());
+            
+            foreach (ListViewItem item in diskContentView.SelectedItems)
+            {
+                int id = (int)item.Tag;
+                disk.RemoveFromDisk(id);
+
+            }
+            RefreshDisk(currDiskID.ToString());
+            
         }
     }
 }

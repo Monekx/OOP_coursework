@@ -16,6 +16,7 @@ namespace OOP_coursework
         public AddTracksToDisk(int ID)
         {
             this.recDiskID = ID;
+            Text = "Додати трек до диску";
             InitializeComponent();
             addTrackToDisk_View.Columns.Add("Трек", 150);
             addTrackToDisk_View.Columns.Add("Автор", 150);

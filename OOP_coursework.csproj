@@ -23,7 +23,8 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>1</ApplicationRevision>
+    <AutorunEnabled>true</AutorunEnabled>
+    <ApplicationRevision>2</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -97,12 +98,6 @@
       <DependentUpon>DiskContent.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\DiskStorage.cs" />
-    <Compile Include="Forms\AdvSearch.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\AdvSearch.Designer.cs">
-      <DependentUpon>AdvSearch.cs</DependentUpon>
-    </Compile>
     <Compile Include="Models\MusicLibrary.cs" />
     <Compile Include="Forms\MainWindow.cs">
       <SubType>Form</SubType>
@@ -123,9 +118,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MainWindow.resx">
       <DependentUpon>MainWindow.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\AdvSearch.resx">
-      <DependentUpon>AdvSearch.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

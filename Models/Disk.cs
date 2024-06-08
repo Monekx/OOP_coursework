@@ -29,8 +29,13 @@ namespace OOP_coursework
 
         public void RemoveFromDisk(int id)
         {
-            Content.RemoveAll(x => x == id);
+            try
+            { 
+                Content.RemoveAll(x => x == id);
+            }
+            catch { return; }
         }
+
     }
 
 

@@ -166,21 +166,15 @@ namespace OOP_coursework
             RefreshDiskStorage();
         }
 
-        private void Search_Click(object sender, EventArgs e)
-        {
-            string text = Search_box.Text;
-            List<Track> result = library.SearchTracks(text);
-            ShowSearchResult(result);
-        }
-
         private void DeleteTrack_Click(object sender, EventArgs e)
         {
+            if (listViewSongs.SelectedItems.Count == 0) { MessageBox.Show("Ви не обрали жодного треку!", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error); return; }
             DialogResult result = MessageBox.Show("Ви впевнені, що хочете це зробити? Цю дію неможливо скасувати!",
                                               "Підтвердження дії",
                                               MessageBoxButtons.YesNo,
                                               MessageBoxIcon.Question);
             if (result == DialogResult.No) { return; }
-            if (listViewSongs.SelectedItems.Count == 0) { MessageBox.Show("Ви не заповнили одне або декілька полей!", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error); return; }
+            
             foreach (ListViewItem item in listViewSongs.SelectedItems)
             {
                 int id = (int)item.Tag;
@@ -198,36 +192,19 @@ namespace OOP_coursework
             RefreshDiskStorage();
         }
 
-        private void SaveFile_Click(object sender, EventArgs e)
-        {
-            string lib_json = library.SaveToJson();
-            string disks_json = diskStorage.SaveToJson();
-
-            File.WriteAllText("data.json", $"{{\"Library\":{lib_json},\"Address\":{disks_json}}}");
-
-        }
-
-
-
-        private void AdvSearch_Click(object sender, EventArgs e)
-        {
-            AdvSearchForm advanceSearchForm = new AdvSearchForm();
-            advanceSearchForm.ShowDialog();
-        }
-
-        private void ToolStripMenuItem4_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void ChooseDisk_Click(object sender, EventArgs e)
         {
-            string item = diskList.SelectedItems[0].Tag.ToString();
-            Disk currentDisk = diskStorage.Search(item);
-            DiskContent diskContent = new DiskContent(currentDisk.DiskId);
-            diskContent.ShowDialog();
+            try
+            {
+                string item = diskList.SelectedItems[0].Tag.ToString();
+                Disk currentDisk = diskStorage.Search(item);
+                DiskContent diskContent = new DiskContent(currentDisk.DiskId);
+                diskContent.ShowDialog();
 
-            RefreshDiskStorage();
+                RefreshDiskStorage();
+            }
+            catch { return; }
         }
 
         private void advSearch_search_Click(object sender, EventArgs e)
@@ -283,6 +260,7 @@ namespace OOP_coursework
 
         private void deleteDisk_Click(object sender, EventArgs e)
         {
+            if (diskList.SelectedItems.Count == 0) { MessageBox.Show("Ви не обрали жодного треку!", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error); return; }
             DialogResult result = MessageBox.Show("Ви впевнені, що хочете це зробити? Цю дію неможливо скасувати!",
                                               "Підтвердження дії",
                                               MessageBoxButtons.YesNo,

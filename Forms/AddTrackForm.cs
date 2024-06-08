@@ -18,10 +18,6 @@ namespace OOP_coursework
             InitializeComponent();
         }
 
-        private void AddTrackForm_Load(object sender, EventArgs e)
-        {
-
-        }
 
         private void AddTrackPopButt_Click(object sender, EventArgs e)
         {

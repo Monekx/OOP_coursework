@@ -15,10 +15,8 @@ namespace OOP_coursework
 {
     public class MusicLibrary
     {
-        // Приватное статическое поле для хранения единственного экземпляра MusicLibrary
         private static MusicLibrary instance;
 
-        // Публичное статическое свойство для доступа к единственному экземпляру MusicLibrary
         public static MusicLibrary Instance
         {
             get
@@ -36,12 +34,6 @@ namespace OOP_coursework
             }
         }
 
-        // Приватный конструктор, чтобы предотвратить создание экземпляров через new
-
-
-        // Свойства и методы вашего класса MusicLibrary
-        // ...
-
         public List<Track> tracks { get; set; }
 
         private MusicLibrary()
@@ -51,25 +43,15 @@ namespace OOP_coursework
             
         }
 
-        
-
-        // Метод для добавления трека в конец списка
         public void AddTrack(Track track)
         {
             tracks.Add(track);
         }
 
-        // Метод для удаления трека из списка
         public void RemoveTrack(int id)
         {
             int index = tracks.FindIndex(x => x.Id == id);
             tracks.RemoveAt(index);
-        }
-
-        // Метод для копирования списка
-        public List<Track> Copy()
-        {
-            return tracks;
         }
 
         public Track GetTrackById(int id)
@@ -78,7 +60,6 @@ namespace OOP_coursework
 
         }
 
-        // Метод для поиска трека по ключевым словам
         public List<Track> SearchTracks(string keyword)
         {
             List<Track> result = new List<Track>();
@@ -137,7 +118,7 @@ namespace OOP_coursework
         }
     }
 
-    // Внутренний класс, который реализует IEnumerator
+
     
 
 

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddTracksToDisk));
             this.addTrackToDisk_View = new System.Windows.Forms.ListView();
             this.addTrackToDisk_OK = new System.Windows.Forms.Button();
             this.addTrackToForm_DECLINE = new System.Windows.Forms.Button();
@@ -43,7 +44,6 @@
             this.addTrackToDisk_View.TabIndex = 0;
             this.addTrackToDisk_View.UseCompatibleStateImageBehavior = false;
             this.addTrackToDisk_View.View = System.Windows.Forms.View.Details;
-            
             // 
             // addTrackToDisk_OK
             // 
@@ -74,8 +74,9 @@
             this.Controls.Add(this.addTrackToForm_DECLINE);
             this.Controls.Add(this.addTrackToDisk_OK);
             this.Controls.Add(this.addTrackToDisk_View);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AddTracksToDisk";
-            this.Text = "AddTracksToDisk";
+            this.Text = "Додати треки до диску";
             this.ResumeLayout(false);
 
         }
